@@ -1,0 +1,165 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context="com.example.kayletiu.escapade.StartActivity">
+
+    <!--&lt;!&ndash; The primary full-screen view. This can be replaced with whatever view-->
+    <!--is needed to present your content, e.g. VideoView, SurfaceView,-->
+    <!--TextureView, etc. &ndash;&gt;-->
+    <!--<TextView-->
+    <!--android:id="@+id/fullscreen_content"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:gravity="center"-->
+    <!--android:keepScreenOn="true"-->
+    <!--android:text="@string/dummy_content"-->
+    <!--android:textColor="#33b5e5"-->
+    <!--android:textSize="50sp"-->
+    <!--android:textStyle="bold" />-->
+
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/movingPikoy"
+                android:layout_width="0dp"
+                android:layout_height="68dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                app:layout_constraintBottom_toTopOf="@+id/escapadeTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:srcCompat="@drawable/slime" />
+
+            <ImageButton
+                android:id="@+id/escapadeTitle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:backgroundTint="@android:color/transparent"
+                app:layout_constraintBottom_toTopOf="@+id/playButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movingPikoy"
+                app:srcCompat="@drawable/escapade_title" />
+
+            <ImageButton
+                android:id="@+id/helpButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/sfxButton"
+                app:layout_constraintEnd_toStartOf="@+id/sfxButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sfxButton"
+                app:srcCompat="@drawable/button_help" />
+
+            <ImageButton
+                android:id="@+id/sfxButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/musicButton"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/helpButton"
+                app:layout_constraintTop_toBottomOf="@+id/storyButton"
+                app:srcCompat="@drawable/button_sfx_on" />
+
+            <ImageButton
+                android:id="@+id/musicButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@+id/sfxButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/sfxButton"
+                app:layout_constraintTop_toTopOf="@+id/sfxButton"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/button_music_on" />
+
+            <TextView
+                android:id="@+id/highScore"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="32dp"
+                android:background="#259f5f"
+                android:text="0"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toTopOf="@+id/escapadeTitle"
+                app:layout_constraintEnd_toEndOf="@+id/escapadeTitle"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/storyButton"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toTopOf="@+id/sfxButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/playButton"
+                app:srcCompat="@drawable/button_story" />
+
+            <ImageButton
+                android:id="@+id/playButton"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                app:layout_constraintBottom_toTopOf="@+id/storyButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/escapadeTitle"
+                app:srcCompat="@drawable/button_start_play" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
