@@ -129,19 +129,11 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
         super(context);
 //        this.highScore = highScore;
         getHolder().addCallback(this);
-        Log.d("DIMENSIONS SLIME ", slimePic1.getWidth()+"x"+slimePic1.getHeight());
-        Log.d("DIMENSIONS TREE ", tree.getWidth()+"x"+tree.getHeight());
-        Log.d("DIMENSIONS LEFT SPIKE ", leftSpike.getWidth()+"x"+leftSpike.getHeight());
-
-        Log.d("DIMENSIONS SCREEN ", deviceWidth+"x"+deviceHeight);
-
         preferencesSettings = PreferenceManager.getDefaultSharedPreferences(activity);
         preferencesSettings = activity.getSharedPreferences("MySettings", Context.MODE_PRIVATE);
         this.highScore = preferencesSettings.getInt("highScore", 0);
         this.currentLevel = preferencesSettings.getInt("level", 0);
         this.currentWorld = preferencesSettings.getInt("world", 0);
-        Log.d("GameSurface", "level: " + currentLevel);
-        Log.d("GameSurface", "world: " + currentWorld);
 
         isWin = false;
         isWarningDone = true;
@@ -219,7 +211,6 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
             }
             else{
                 spikes.add(new Spike(this,rightSpike, deviceWidth - rightWall.getImage().getWidth() - rightSpike.getWidth(), y, isLeftTemp));
-                Log.d("SPIKE", "" + (deviceWidth - rightWall.getImage().getWidth() - rightSpike.getWidth()));
             }
             booleanList.offer(isLeftTemp);
 //            y -= deviceHeight / 5.115 ;
@@ -401,9 +392,7 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
                 }
             }
             if(!isInfinite){
-                Log.d("WOWOWOWO", "TRUE");
                 int max = scores[currentWorld - 1][currentLevel - 1];
-                Log.d("MAX", max + "");
                 if(max <= score){
                     isWin = true;
                     this.preferenceEditor = preferencesSettings.edit();
@@ -411,17 +400,12 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
 
                     int maxWorld = qwe / 5 + 1;
                     int maxLevel = qwe % 5;
-                    Log.d("CHECKCHECK", maxWorld + " maxWorld");
-                    Log.d("CHECKCHECK", maxLevel + " maxLevel");
-                    Log.d("CHECKCHECK", currentWorld +" currentWorld");
-                    Log.d("CHECKCHECK", currentLevel +" currentLevel");
                     if(currentWorld * 5 -5 + currentLevel >= qwe){
 
                         this.preferenceEditor.putInt("currentLevel", currentWorld * 5 - 5 + currentLevel + 1);
 
 
                         preferenceEditor.apply();
-                        Log.d("CHECKCHECK", preferencesSettings.getInt("currentLevel", 0) + "");
 
                     }
 
@@ -448,7 +432,6 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
                 spikes.get(i).setMoving(true);
 //            spikes.get(i).goDown();
                 if (spikes.get(i).getY() >= deviceHeight) {
-                    Log.d("CHECKSPIKE", "TRUE");
                     boolean isLeftTemp = r1.nextBoolean();
                     if (isLeftTemp) {
                         spikes.get(i).setImage(leftSpike);
@@ -461,16 +444,11 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
                         spikes.get(i).setLeft(false);
                         booleanList.offer(false);
                     }
-                    Log.d("CHECKSPIKE", deviceHeight / 5.115 + "");
+
                     spikes.get(i).setY(spikes.get(i).getY() -  400 * spikes.size());
                 }
             }
-
-            Log.d("LINKEDLIST", booleanList.peek() + "");
-
-
             long time = System.currentTimeMillis();
-            Log.d("TIME TIME", "Current time: " + time);
         }
             return super.onTouchEvent(event);
 
@@ -550,7 +528,6 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
             if(downYRocket >= upYSlime && upYSlime >= upYRocket && (leftXSlime <= rightXRocket && rightXSlime >= leftXRocket )){
                 if(!isDead){
                     isDead = true;
-                    Log.d("ROCKET", "TUMAMA SA TAAS");
                     lose();
                 }
 
@@ -681,7 +658,6 @@ public class GameSurface extends android.view.SurfaceView implements SurfaceHold
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putInt("highScore",score);
                 editor.apply();
-                Log.d("HIGH SCORE", "NATALO YUNG HIGHSCORE");
             }
         }
         else {

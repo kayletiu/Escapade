@@ -148,7 +148,6 @@ public class StoryActivity extends AppCompatActivity {
         int level2 = 0;
         int level3 = 0;
         this.currentLevel = preferencesSettings.getInt("currentLevel", 1);
-        Log.d("finishedlevel", "saload" + this.currentLevel);
         if (this.currentLevel < 5){
             level1 = this.currentLevel;
             level2 = 0;
@@ -229,7 +228,6 @@ public class StoryActivity extends AppCompatActivity {
 
         if(resultCode == Activity.RESULT_OK){
             loadWorld();
-            Log.d("CHECKCHECK", "RESULT OK!");
         }
     }
 
@@ -238,7 +236,6 @@ public class StoryActivity extends AppCompatActivity {
         final SharedPreferences.Editor preferenceEditor = getSharedPreferences("MySettings", 0).edit();
         final int[] lives = {0};
         lives[0] = sharedPreferences.getInt("currentLives", 0);
-        Log.d("StoryActivity", lives[0] + "");
         if (lives[0] < 5) {
             lives[0]++;
             preferenceEditor.putInt("currentLives", lives[0]);
@@ -284,10 +281,8 @@ public class StoryActivity extends AppCompatActivity {
         preferencesSettings = getSharedPreferences("MySettings", Context.MODE_PRIVATE);
         currentLevel = preferencesSettings.getInt("currentLevel", 1);
         this.isMusicOn = preferencesSettings.getBoolean("isMusicOn", false);
-        Log.d("StoryActivity", "isMusicOn" + this.isMusicOn);
         isSfxOn = preferencesSettings.getBoolean("isSfxOn", true);
         svc =new Intent(this, MusicService.class);
-        Log.d("LEVEL", "current" + currentLevel);
         if (isSfxOn) {
         }
         else {

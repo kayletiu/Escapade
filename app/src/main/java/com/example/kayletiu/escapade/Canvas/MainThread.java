@@ -234,7 +234,6 @@ public class MainThread extends Thread {
     @Override
     public void run() {
         Canvas canvas;
-        Log.d("TESTING: " , "Starting game loop");
         long beginTime;
         long timeDiff;
         int sleepTime;

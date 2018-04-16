@@ -204,12 +204,10 @@ public class StartActivity extends AppCompatActivity implements PlaySongListener
                 ImageButton sfx = (ImageButton) findViewById(R.id.sfxButton);
                 if(isSfxOn){
                     sfx.setImageResource(R.drawable.button_sfx_off);
-                    Log.d("SFX", "SFX OFF");
                     isSfxOn = false;
                 }
                 else{
                     sfx.setImageResource(R.drawable.button_sfx_on);
-                    Log.d("SFX", "SFX ON");
                     isSfxOn = true;
 
                 }
@@ -232,13 +230,11 @@ public class StartActivity extends AppCompatActivity implements PlaySongListener
                     stopService(svc);
                     music.setImageResource(R.drawable.button_music_off);
                     isMusicOn = false;
-                    Log.d("Music", "Music turned off");
                 }
                 else{
                     startService(svc);
                     music.setImageResource(R.drawable.button_music_on);
                     isMusicOn = true;
-                    Log.d("Music", "Music turned on");
                 }
             }
         });
@@ -311,7 +307,6 @@ public class StartActivity extends AppCompatActivity implements PlaySongListener
 //        this.preferenceEditor.putInt("currentLives", currentLives);
         this.preferenceEditor.putInt("highScore", highScore);
         preferenceEditor.apply();
-        Log.d("StartActivity", "sent isMusicOn: " + isMusicOn);
         super.onPause();
     }
 
@@ -327,7 +322,6 @@ public class StartActivity extends AppCompatActivity implements PlaySongListener
         String sHighScore = Integer.toString(this.highScore);
         tvHighScore.setText(sHighScore.toString());
 
-        Log.d("QWEQWEQWEQWE", "HIGHSCORE: " + highScore);
 
         if (isMusicOn) {
             startService(svc);
